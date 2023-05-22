@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Link Generator</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 10%;
+    }
+    
+    td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+  <script>
+    
+    let data = ["syllabus.html", "p1.html", "p2.html", "style.html", "email.html", "system.html", "process.html"];
+
+    
+    function displayTable() {
+      var startRange = parseInt(document.getElementById("startRange").value);
+      var endRange = parseInt(document.getElementById("endRange").value);
+      var message = document.getElementById("message");
+
+      if (isNaN(startRange) || isNaN(endRange) || startRange > endRange || startRange < 1 || endRange > data.length) {
+        var validRange = "Valid Range: 1-" + data.length;
+        message.textContent = "Invalid range, " + validRange;
+        document.getElementById("tableContainer").innerHTML = "";
+        return;
+      }
+
+      var table = "<table>";
+
+      for (var i = startRange - 1; i <= endRange - 1; i++) {
+        table += "<tr><td><a href='" + data[i] + "'>" + data[i] + "</a></td></tr>";
+      }
+
+      table += "</table>";
+
+      document.getElementById("tableContainer").innerHTML = table;
+      message.textContent = "";
+    }
+
+    
+    function displayValidRangeMessage() {
+      var validRangeMessage = "Valid Range: 1-" + data.length;
+      document.getElementById("validRange").textContent = validRangeMessage;
+    }
+  </script>
+  <script src="gene.js"></script>
+</head>
+<body onload="displayValidRangeMessage()">
+  <h1>Link Generator</h1>
+  <form>
+    <label for="startRange">Start Range:</label>
+    <input type="text" id="startRange" name="startRange" value="1">
+
+    <label for="endRange">End Range:</label>
+    <input type="text" id="endRange" name="endRange" value="1">
+
+    <button type="button" onclick="displayTable()">Generate Table</button>
+  </form>
+
+  <p id="validRange"></p>
+  <div id="message"></div>
+  <table id="tableContainer"></table>
+</body>
+</html>

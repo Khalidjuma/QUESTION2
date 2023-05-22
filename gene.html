@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="gene.js"></script>
+    <style>
+      background{
+          color: cyan;
+      }
+    </style>
+</head>
+<body onload="displayValidRangeMessage()">
+    <h1>Link Generator</h1>
+    <form>
+      <label for="startRange">Start Range:</label>
+      <input type="text" id="startRange" name="startRange" value="1">
+  
+      <label for="endRange">End Range:</label>
+      <input type="text" id="endRange" name="endRange" value="1">
+      <br />
+      <br />
+      <button type="button" onclick="displayTable()">Display table</button>
+    </form>
+  
+    <h2 id="validRange"></h2>
+    <div id="tableContainer"></div>
+  </body>
+  
+</html>
